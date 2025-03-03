@@ -12,13 +12,12 @@ const nextConfig = {
     }
     return config;
   },
-  // This ensures all pages are statically generated at build time
-  output: 'export',
-  // Disable image optimization since we're using static export
+  // Server-side rendering enabled (removed static export)
+  // Disable image optimization if needed
   images: {
     unoptimized: true,
   },
-  // Trailing slash for better compatibility with static hosting
+  // Trailing slash for better compatibility
   trailingSlash: true,
 }
 
