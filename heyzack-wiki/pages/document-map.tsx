@@ -277,8 +277,7 @@ export async function getStaticProps() {
       props: {
         documents,
         categories
-      },
-      revalidate: 10
+      }
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);
@@ -286,8 +285,7 @@ export async function getStaticProps() {
       props: {
         documents: [],
         categories: {}
-      },
-      revalidate: 10
+      }
     };
   }
 }

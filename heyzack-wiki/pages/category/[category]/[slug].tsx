@@ -218,6 +218,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       prevDocument,
       nextDocument,
     },
-    revalidate: 10,
   };
 };

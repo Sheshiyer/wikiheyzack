@@ -161,6 +161,5 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       category: uppercaseCategory,
       categoryDescription,
     },
-    revalidate: 10,
   };
 };

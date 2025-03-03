@@ -183,9 +183,7 @@ export async function getStaticProps() {
       props: {
         recentDocuments,
         popularCategories
-      },
-      // Re-generate at most once per 10 seconds
-      revalidate: 10
+      }
     };
   } catch (error) {
     console.error('Error in getStaticProps:', error);
@@ -193,8 +191,7 @@ export async function getStaticProps() {
       props: {
         recentDocuments: [],
         popularCategories: {}
-      },
-      revalidate: 10
+      }
     };
   }
 }
