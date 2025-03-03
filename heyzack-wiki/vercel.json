@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "routes": [
+    { "src": "/category/(?<category>[^/]+)/(?<slug>[^/]+)", "dest": "/category/[category]/[slug]" },
+    { "src": "/category/(?<category>[^/]+)", "dest": "/category/[category]/index" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

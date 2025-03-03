@@ -17,8 +17,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Trailing slash for better compatibility
-  trailingSlash: true,
+  // Remove trailing slash as it can cause routing issues
+  trailingSlash: false,
 }
 
 module.exports = nextConfig
