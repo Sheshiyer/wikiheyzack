@@ -14,17 +14,24 @@ interface CategoryPageProps {
 }
 
 export default function CategoryPage({ documents, documentsBySection, category, categoryDescription }: CategoryPageProps) {
-  // Determine if we should use sections (only for Strategy category)
-  const useSections = category === 'Strategy' && Object.keys(documentsBySection).length > 0;
+  // Determine if we should use sections (for Strategy and Launchboom categories)
+  const useSections = (category === 'Strategy' || category === 'Launchboom') && Object.keys(documentsBySection).length > 0;
   
-  // Section descriptions for Strategy category
+  // Section descriptions for Strategy and Launchboom categories
   const sectionDescriptions: { [key: string]: string } = {
+    // Strategy section descriptions
     'Financial Metrics': 'Key financial indicators and metrics for tracking business performance',
     'Market Analysis': 'Analysis of market size, potential, and fit for HeyZack products',
     'Brand Strategy': 'Strategic approaches to brand positioning and identity',
     'Product Strategy': 'Product development, experience, and customer-focused strategies',
     'Implementation': 'Roadmaps, team structures, and implementation guides',
-    'Other': 'Additional strategy documents and resources'
+    'Other': 'Additional strategy documents and resources',
+    
+    // Launchboom section descriptions
+    'Product Information': 'Overview of HeyZack smart home products and features',
+    'Smart Home Kits': 'Detailed information about HeyZack smart home kit packages and pricing',
+    'Automation Solutions': 'Real-world automation scenarios and use cases for HeyZack products',
+    'Other Launchboom Documents': 'Additional resources related to Launchboom campaigns'
   };
 
   return (
@@ -48,7 +55,7 @@ export default function CategoryPage({ documents, documentsBySection, category, 
         </p>
 
         {useSections ? (
-          // Sectioned layout for Strategy category
+          // Sectioned layout for Strategy and Launchboom categories
           <div className="space-y-12">
             {Object.entries(documentsBySection).map(([section, sectionDocs]) => (
               <div key={section} className="bg-white dark:bg-secondary-800 rounded-xl p-6 shadow-md">
@@ -149,8 +156,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const documents = getAllDocumentsForCategory(uppercaseCategory);
   const categoryDescription = DOCUMENT_CATEGORIES[uppercaseCategory as keyof typeof DOCUMENT_CATEGORIES];
   
-  // Group documents by section if this is the Strategy category
-  const documentsBySection = uppercaseCategory === 'Strategy' 
+  // Group documents by section if this is the Strategy or Launchboom category
+  const documentsBySection = (uppercaseCategory === 'Strategy' || uppercaseCategory === 'Launchboom')
     ? groupDocumentsBySection(documents)
     : { 'All Documents': documents };
 

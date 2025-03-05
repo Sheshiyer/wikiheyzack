@@ -258,6 +258,13 @@ export function groupDocumentsBySection(documents: DocumentMeta[]): { [section: 
     'Implementation': ['implementation-roadmap', 'implementation-team-structure', 'investor-presentation-guide', 'crowdfunding-campaign-toolkit']
   };
   
+  // Define default sections for Launchboom documents
+  const defaultLaunchboomSections = {
+    'Product Information': ['heyzack-product-overview'],
+    'Smart Home Kits': ['heyzack-smart-home-kits'],
+    'Automation Solutions': ['heyzack-automation-ideas', 'smart-home-automation-narrative']
+  };
+  
   documents.forEach(doc => {
     // If document has a section defined in frontmatter, use that
     if (doc.section) {
@@ -288,7 +295,30 @@ export function groupDocumentsBySection(documents: DocumentMeta[]): { [section: 
         }
         sections['Other'].push(doc);
       }
-    } 
+    }
+    // For Launchboom documents, categorize based on slug
+    else if (doc.category === 'Launchboom') {
+      let assigned = false;
+      
+      // Check if the document slug matches any of the default sections
+      Object.entries(defaultLaunchboomSections).forEach(([section, slugs]) => {
+        if (slugs.includes(doc.slug)) {
+          if (!sections[section]) {
+            sections[section] = [];
+          }
+          sections[section].push(doc);
+          assigned = true;
+        }
+      });
+      
+      // If not assigned to any section, put in "Other"
+      if (!assigned) {
+        if (!sections['Other Launchboom Documents']) {
+          sections['Other Launchboom Documents'] = [];
+        }
+        sections['Other Launchboom Documents'].push(doc);
+      }
+    }
     // For other categories, put all in "All Documents"
     else {
       if (!sections['All Documents']) {

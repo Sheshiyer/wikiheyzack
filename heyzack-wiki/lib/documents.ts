@@ -2,14 +2,16 @@
 export const DOCUMENT_DIRECTORIES = {
   'B2B': 'B2b',
   'Strategy': 'Strategy',
-  'Branding': 'Branding'
+  'Branding': 'Branding',
+  'Launchboom': 'Launchboom'
 };
 
 // Define the document categories with their respective descriptions
 export const DOCUMENT_CATEGORIES = {
   'B2B': 'Building Management Solution (BMS) for commercial buildings',
   'Strategy': 'Business and product strategy documentation',
-  'Branding': 'Brand identity and marketing guidelines'
+  'Branding': 'Brand identity and marketing guidelines',
+  'Launchboom': 'Smart home product kits and automation solutions for crowdfunding campaigns'
 };
 
 // Define the document type
@@ -116,6 +118,50 @@ const BRANDING_DOCUMENTS: DocumentType[] = [
   }
 ];
 
+// Mock/sample documents for the Launchboom category
+const LAUNCHBOOM_DOCUMENTS: DocumentType[] = [
+  {
+    slug: 'heyzack-product-overview',
+    category: 'Launchboom',
+    title: 'HeyZack Product Overview',
+    path: '/Launchboom/heyzack-product-overview.md',
+    content: '# HeyZack - The AI-Powered Smart Home Kit\n\nTransform Your Home into a Smart, Secure & Energy-Efficient Haven',
+    excerpt: 'Transform Your Home into a Smart, Secure & Energy-Efficient Haven with the most advanced AI-powered smart home kit.',
+    relatedDocs: ['heyzack-smart-home-kits', 'heyzack-automation-ideas'],
+    tags: ['product', 'overview', 'smart home', 'AI', 'automation']
+  },
+  {
+    slug: 'heyzack-smart-home-kits',
+    category: 'Launchboom',
+    title: 'HeyZack Smart Home Kits',
+    path: '/Launchboom/heyzack-smart-home-kits.md',
+    content: '# HeyZack Smart Home Kits - AI-Powered Automation for Every Home\n\nWe\'ve designed smart home kits tailored for different home sizes, ensuring security, energy savings, and comfort with easy DIY installation and voice & AI automation.',
+    excerpt: 'Smart home kits tailored for different home sizes, ensuring security, energy savings, and comfort with easy DIY installation.',
+    relatedDocs: ['heyzack-product-overview', 'smart-home-automation-narrative'],
+    tags: ['kits', 'smart home', 'pricing', 'packages', 'automation']
+  },
+  {
+    slug: 'heyzack-automation-ideas',
+    category: 'Launchboom',
+    title: 'HeyZack Automation Ideas',
+    path: '/Launchboom/heyzack-automation-ideas.md',
+    content: '# HeyZack AI-Powered Smart Home - Automation Ideas\n\nThis document outlines practical automation scenarios using HeyZack smart home products.',
+    excerpt: 'Practical automation scenarios using HeyZack smart home products to solve real-world problems, enhance comfort, save energy, and improve security.',
+    relatedDocs: ['heyzack-product-overview', 'smart-home-automation-narrative'],
+    tags: ['automation', 'scenarios', 'smart home', 'energy saving', 'security']
+  },
+  {
+    slug: 'smart-home-automation-narrative',
+    category: 'Launchboom',
+    title: 'Smart Home Automation Narrative',
+    path: '/Launchboom/smart-home-automation-narrative.md',
+    content: '# HeyZack: AI-Powered Smart Home Solutions for Real-World Problems\n\nThis document outlines 10 real-world scenarios where HeyZack smart home products work together to solve everyday challenges.',
+    excerpt: 'Real-world scenarios where HeyZack smart home products work together to solve everyday challenges faced by homeowners.',
+    relatedDocs: ['heyzack-automation-ideas', 'heyzack-smart-home-kits'],
+    tags: ['narrative', 'scenarios', 'real-world', 'smart home', 'solutions']
+  }
+];
+
 // Get all documents for a specific category
 export function getDocumentsByCategory(category: string): DocumentType[] {
   switch(category) {
@@ -125,6 +171,8 @@ export function getDocumentsByCategory(category: string): DocumentType[] {
       return STRATEGY_DOCUMENTS;
     case 'Branding':
       return BRANDING_DOCUMENTS;
+    case 'Launchboom':
+      return LAUNCHBOOM_DOCUMENTS;
     default:
       return [];
   }
@@ -135,7 +183,8 @@ export function getAllDocuments(): DocumentType[] {
   return [
     ...B2B_DOCUMENTS,
     ...STRATEGY_DOCUMENTS,
-    ...BRANDING_DOCUMENTS
+    ...BRANDING_DOCUMENTS,
+    ...LAUNCHBOOM_DOCUMENTS
   ];
 }
 

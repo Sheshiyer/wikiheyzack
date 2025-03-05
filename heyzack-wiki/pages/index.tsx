@@ -81,6 +81,22 @@ export default function Home({ recentDocuments, popularCategories }: HomeProps) 
           </div>
         </BentoCard>
 
+        {/* Launchboom */}
+        <BentoCard 
+          title="Launchboom Campaign" 
+          size="md"
+          className="bg-gradient-to-br from-secondary-50 to-secondary-100 dark:from-secondary-900 dark:to-secondary-800"
+          href="/category/launchboom"
+          compact={true}
+        >
+          <p className="mb-3">AI-powered smart home kits and automation solutions for crowdfunding campaigns.</p>
+          <div className="flex flex-wrap gap-1">
+            <span className="bg-secondary-100 dark:bg-secondary-800 text-secondary-800 dark:text-secondary-100 text-xs px-2 py-0.5 rounded-full">Smart Home Kits</span>
+            <span className="bg-secondary-100 dark:bg-secondary-800 text-secondary-800 dark:text-secondary-100 text-xs px-2 py-0.5 rounded-full">Automation</span>
+            <span className="bg-secondary-100 dark:bg-secondary-800 text-secondary-800 dark:text-secondary-100 text-xs px-2 py-0.5 rounded-full">Crowdfunding</span>
+          </div>
+        </BentoCard>
+
         {/* Document Categories */}
         <BentoCard title="Browse Documentation" size="lg" compact={true}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
